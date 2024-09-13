@@ -6,6 +6,35 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div id="controls">
+        <label for="location">
+            <span>Location:</span>
+            <input type="text" name="location" id="location">
+            <span id="location-error">error</span>
+            <button type="submit" id="check-weather-button">Check Weather</button>
+        </label>
+        <div id="toggle-temperature-unit">
+            <span>Temperature unit: <span id="celcius" class="active">°C</span><span id="fahrenheit">°F</span></span>
+        </div>
+    </div>
+    <div id="output">
+        <div id="gif"><img src="https://media2.giphy.com/media/FQZcbMl94hAbyyxltv/giphy.gif?cid=13950553j3y9ub7guu29m7huvkg3gy273vvdpmt0ewttje26&ep=v1_gifs_translate&rid=giphy.gif&ct=g" alt=""></div>
+        <div>
+            <div>Temperature</div>
+            <div id="temperature">324</div>
+        </div>
+        <div>
+            <div>Precipitation probability</div>
+            <div id="precipitation-probability">100</div>
+        </div>
+        <div>
+            <div>Conditions</div>
+            <div id="conditions">partly cloudy</div>
+        </div>
+        <div>
+            <div>Description</div>
+            <div id="description">mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</div>
+        </div>
+    </div>
 </body>
 </html>
