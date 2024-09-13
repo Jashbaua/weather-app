@@ -26,7 +26,7 @@ async function displayWeather() {
     try {
         let data = await App.fetchWeatherData(locationInp.value)
         gifOpt.src = data.gif
-        temperatureOpt.textContent = data.temperature
+        temperatureOpt.textContent = data.temperature + '°F'
         precipprobOpt.textContent = data.precipprob
         conditionsOpt.textContent = data.conditions
         descriptionOpt.textContent = data.description
@@ -36,5 +36,29 @@ async function displayWeather() {
         locationErr.classList.add('active')
     }
 }
-function toggleCelcius() {}
-function toggleFahrenheit() {}
+function toCelcius(temp) {
+    let value = temp.slice(0, -2)
+    return Math.round((value-32)*5/9*100)/100+'°C'
+}
+function toggleCelcius() {
+    if (!celcius.classList.contains('active')) {
+        celcius.classList.add('active')
+        fahrenheit.classList.remove('active')
+    }
+    temperatureOpt.textContent=toCelcius(temperatureOpt.textContent)
+}
+function toFahrenheit(temp) {
+    let value = temp.slice(0, -2)
+    return Math.round((value*9/5+32)*100)/100+'°F'
+}
+function toggleFahrenheit() {
+    if (!fahrenheit.classList.contains('active')) {
+        fahrenheit.classList.add('active')
+        celcius.classList.remove('active')
+    }
+    temperatureOpt.textContent=toFahrenheit(temperatureOpt.textContent)
+}
+
+//Initializing UI
+toggleFahrenheit()
+
