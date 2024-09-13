@@ -25,7 +25,6 @@ async function fetchWeatherData(location) {
             throw new Error ()
         }
 		let data = await response.json();
-		console.log(data);
 		let gif = await fetchGif(data.days[0].conditions);
 		return {
 			gif,

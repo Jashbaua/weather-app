@@ -8,32 +8,56 @@ const checkWeatherBtn = document.querySelector("#check-weather-button");
 const celcius = document.querySelector("#celcius");
 const fahrenheit = document.querySelector("#fahrenheit");
 //Output
-const gifOpt=document.querySelector('#gif>img')
+const optData=document.querySelector('#data')
+const gifOpt = document.querySelector('#gif>img')
+const gifWaiting=document.querySelector('#waiting-gif')
 const temperatureOpt = document.querySelector("#temperature");
 const precipprobOpt = document.querySelector("#precipitation-probability");
 const conditionsOpt = document.querySelector("#conditions");
 const descriptionOpt = document.querySelector("#description");
 
 //Event binding
-locationInp.addEventListener("input", validateLocation);
 checkWeatherBtn.addEventListener("click", displayWeather);
 celcius.addEventListener("click", toggleCelcius);
 fahrenheit.addEventListener("click", toggleFahrenheit);
 
 //Location
-function validateLocation() {}
+function hideData() {
+    gifOpt.style.opacity=0
+    optData.style.opacity=0
+ }
+function showData() { 
+    gifOpt.style.opacity=1
+    optData.style.opacity=1
+}
+function hideWaiting() { 
+    gifWaiting.style.opacity=0
+}
+function showWaiting() { 
+    gifWaiting.style.opacity=1
+}
+
 async function displayWeather() {
     try {
+        hideData()
+        showWaiting()
         let data = await App.fetchWeatherData(locationInp.value)
+        gifOpt.src='#'
         gifOpt.src = data.gif
         temperatureOpt.textContent = data.temperature + '°F'
+        if(celcius.classList.contains('active'))toggleCelcius()
         precipprobOpt.textContent = data.precipprob
         conditionsOpt.textContent = data.conditions
         descriptionOpt.textContent = data.description
         locationErr.classList.remove('active')
+        await new Promise((resolve)=>setTimeout(resolve, 3000))
+        hideWaiting()
+        showData()
     }
     catch (error) {
         locationErr.classList.add('active')
+        hideWaiting()
+        hideData()
     }
 }
 function toCelcius(temp) {
@@ -61,4 +85,6 @@ function toggleFahrenheit() {
 
 //Initializing UI
 toggleFahrenheit()
-
+gifOpt.style.opacity = 0
+optData.style.opacity=0
+gifWaiting.style.opacity=0
