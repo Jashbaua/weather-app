@@ -1,0 +1,125 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    display: grid;
+    grid-template: auto 1fr/auto 1fr;
+    place-items: center;
+    gap: 15px;
+}
+#controls{
+    grid-column: 1/-1;
+    display: grid;
+    padding-top: 20px;
+    gap: 5px;
+}
+#controls>label{
+    display: grid;
+    grid-template: auto auto/auto auto;
+    place-items: center;
+    column-gap: 5px;
+}
+#location{
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    outline: none;
+    height: 2rem;
+    padding: 10px;
+    background-color: rgb(231, 231, 231);
+}
+#location:hover{
+    filter: brightness(95%);
+}
+#location:focus{
+    filter: brightness(95%);
+}
+#location-error{
+    grid-column: 2/3;
+    font-size: 0.7rem;
+    color: red;
+    opacity: 0;
+}
+#location-error.active{
+    opacity: 1;
+}
+#check-weather-button{
+    border: none;
+    border-radius: 10px;
+    height: 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: rgb(0, 255, 132);
+    box-shadow: 3px 3px 3px rgb(234, 234, 234);
+}
+#check-weather-button:hover{
+    filter: brightness(90%);
+}
+#check-weather-button:active{
+    filter: brightness(110%);
+}
+#toggle-temperature-unit{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+#celcius:hover{
+    background-color: rgb(234, 234, 234);
+    box-shadow: 0px 0px 4px 4px rgb(234, 234, 234);
+}
+#celcius:hover.active{
+    box-shadow: none;
+}
+#celcius.active{
+    background-color: rgb(0, 255, 132);
+    border-radius: 5px;
+    padding: 2px;
+}
+#fahrenheit:hover{
+    background-color: rgb(234, 234, 234);
+    box-shadow: 0px 0px 4px 4px rgb(234, 234, 234);
+}
+#fahrenheit:hover.active{
+    box-shadow: none;
+}
+#fahrenheit.active{
+    background-color: rgb(0, 255, 132);
+    border-radius: 5px;
+    padding: 2px;
+}
+#gif{
+    height: 400px;
+    min-width: 200px;
+    max-width:400px;
+    align-content: center ;
+}
+#gif>img{
+    max-height: 100%;
+    max-width: 100%;
+}
+#data{
+    justify-self: left;
+    display: grid;
+    grid-template: repeat(4,auto)/auto 1fr;
+    row-gap: 10px;
+    align-items: center;
+}
+#data>div:nth-of-type(2n+1){
+    
+}
+#data>div:nth-of-type(2n){
+    margin-left: 10px;
+    background-color: rgb(126, 255, 193);
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+#data>div:last-of-type{
+    width: 700px;
+    overflow-wrap: break-word;
+}

@@ -3,6 +3,7 @@ import * as App from "./app";
 //Dom cache
 //Controls
 const locationInp = document.querySelector("#location");
+const locationErr=document.querySelector('#location-error')
 const checkWeatherBtn = document.querySelector("#check-weather-button");
 const celcius = document.querySelector("#celcius");
 const fahrenheit = document.querySelector("#fahrenheit");
@@ -22,12 +23,18 @@ fahrenheit.addEventListener("click", toggleFahrenheit);
 //Location
 function validateLocation() {}
 async function displayWeather() {
-    let data = await App.fetchWeatherData(locationInp.value)
-    gifOpt.src=data.gif
-    temperatureOpt.textContent = data.temperature
-    precipprobOpt.textContent = data.precipprob
-    conditionsOpt.textContent = data.conditions
-    descriptionOpt.textContent = data.description
+    try {
+        let data = await App.fetchWeatherData(locationInp.value)
+        gifOpt.src = data.gif
+        temperatureOpt.textContent = data.temperature
+        precipprobOpt.textContent = data.precipprob
+        conditionsOpt.textContent = data.conditions
+        descriptionOpt.textContent = data.description
+        locationErr.classList.remove('active')
+    }
+    catch (error) {
+        locationErr.classList.add('active')
+    }
 }
 function toggleCelcius() {}
 function toggleFahrenheit() {}
